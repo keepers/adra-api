@@ -9,9 +9,8 @@ var bodyParser = require('body-parser');
 var morgan     = require('morgan');
 var mongoose   = require('mongoose');
 
-var route      = require('./route');
-var middleware = require('./middleware');
-var logger     = require('./libraries/logger');
+var routes      = require('./routes');
+var middlewares = require('./middlewares');
 
 var Promise = require('bluebird');
 Promise.promisifyAll(mongoose);
@@ -27,8 +26,8 @@ app.set('superSecret', config.SECRET);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(middleware.cors);
-app.use('/', route);
+app.use(middlewares.cors);
+app.use('/', routes);
 
 app.listen(port);
 console.log('Magic happens on port ' + port);
