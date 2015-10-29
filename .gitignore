@@ -3,6 +3,8 @@ node_modules
 coverage
 .env
 .vscode
+typings
+jsconfig.json
 *.log
 *.todo
 *.sublime-workspace
