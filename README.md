@@ -10,6 +10,6 @@ $ npm install
 ### Run
 ```
 $ mongod
-$ cd api
+$ cd adra-api
 $ nodemon server
 ```
