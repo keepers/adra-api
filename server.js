@@ -12,8 +12,8 @@ var mongoose   = require('mongoose');
 var routes      = require('./routes');
 var middlewares = require('./middlewares');
 
-var Promise = require('bluebird');
-Promise.promisifyAll(mongoose);
+var bluebird = require('bluebird');
+bluebird.promisifyAll(mongoose);
 
 if (config.DEV_MODE) {
   mongoose.set('debug', true);
