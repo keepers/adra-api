@@ -22,9 +22,14 @@ bluebird.promisifyAll(mongoose);
 
 var amount = argv.amount || 10;
 
-
+var form = {
+  id: faker.random.number(),
+  name: faker.name.firstName(),
+  description: faker.lorem.sentence()
+};
 var generateBeneficiary = function() {
   var beneficiary = {
+    form: form,
     name: {
       first: faker.name.firstName(),
       last: faker.name.lastName()
@@ -37,8 +42,8 @@ var generateBeneficiary = function() {
       feminine: 3,
       total: 5
     },
-    pregnant: [0, 1, 2][Math.floor(Math.random() * [0, 1, 2].length)],
-    lactantsMothers: [0, 1, 2][Math.floor(Math.random() * [0, 1, 2].length)],
+    pregnants: [0, 1, 2][Math.floor(Math.random() * [0, 1, 2].length)],
+    lactantMothers: [0, 1, 2][Math.floor(Math.random() * [0, 1, 2].length)],
     disables: [0, 1, 2][Math.floor(Math.random() * [0, 1, 2].length)],
     elders: [0, 1, 2][Math.floor(Math.random() * [0, 1, 2].length)]
   };

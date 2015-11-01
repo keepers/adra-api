@@ -5,6 +5,23 @@ var Schema   = mongoose.Schema;
 
 var BeneficiarySchema = new Schema({
 
+  form: {
+    id: {
+      type: String,
+      trim: true,
+      required: true
+    },
+    name: {
+      type: String,
+      trim: true,
+      lowercase: true,
+      required: true
+    },
+    description: {
+      type: String
+    }
+  },
+
   name: {
     first: {
       type: String,
@@ -50,12 +67,12 @@ var BeneficiarySchema = new Schema({
     }
   },
 
-  pregnant: {
+  pregnants: {
     type: Number,
     default: 0
   },
 
-  lactantsMothers: {
+  lactantMothers: {
     type: Number,
     default: 0
   },
