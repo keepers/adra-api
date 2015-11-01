@@ -9,6 +9,9 @@ var bodyParser = require('body-parser');
 var morgan     = require('morgan');
 var mongoose   = require('mongoose');
 
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+
 var routes      = require('./routes');
 var middlewares = require('./middlewares');
 
@@ -29,7 +32,14 @@ app.use(bodyParser.json());
 app.use(middlewares.cors);
 app.use('/', routes);
 
-app.listen(port);
+server.listen(port);
 console.log('Magic happens on port ' + port);
+
+io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
 
 module.exports = app;
