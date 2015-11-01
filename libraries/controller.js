@@ -45,6 +45,13 @@ class Controller {
   create(req, res, next) {
     this.model.create(req.body)
     .then(function(doc) {
+
+      // http://socket.io emiting a document to
+      // alow live statistics
+      var http = require('http').Server(req.app);
+      var io = require('socket.io')(http);
+      io.emit('document', doc);
+
       res.status(201).json(doc);
     })
     .catch(function(err) {
@@ -79,6 +86,16 @@ class Controller {
       }
 
       res.sendStatus(204);
+    })
+    .catch(function(err) {
+      return next(err);
+    });
+  }
+
+  stats(req, res, next) {
+    this.model.stats()
+    .then(function(collection) {
+      res.status(200).json(collection);
     })
     .catch(function(err) {
       return next(err);
