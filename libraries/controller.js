@@ -43,16 +43,16 @@ class Controller {
   }
 
   create(req, res, next) {
+    var response = {};
     this.model.create(req.body)
     .then(function(doc) {
-
-      // http://socket.io emiting a document to
-      // alow live statistics
-      var http = require('http').Server(req.app);
-      var io = require('socket.io')(http);
-      io.emit('document', doc);
-
-      res.status(201).json(doc);
+      response = doc;
+      return this.model.stats();
+    })
+    .then(function (stats) {
+      var socketio = req.app.get('socketio');
+      socketio.emit('stats', stats);
+      res.status(201).json(response);
     })
     .catch(function(err) {
       return next(err);
