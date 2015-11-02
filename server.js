@@ -25,6 +25,7 @@ if (config.DEV_MODE) {
 mongoose.connect(config.MONGODB_URL);
 
 app.set('superSecret', config.SECRET);
+app.set('socketio', io);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
