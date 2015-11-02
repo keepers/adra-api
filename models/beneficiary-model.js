@@ -1,7 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
-
 var Model = require('../libraries/model');
 var Beneficiary = require('../schemas/beneficiary-schema');
 
