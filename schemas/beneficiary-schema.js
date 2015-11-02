@@ -5,21 +5,10 @@ var Schema   = mongoose.Schema;
 
 var BeneficiarySchema = new Schema({
 
-  form: {
-    id: {
-      type: String,
-      trim: true,
-      required: true
-    },
-    name: {
-      type: String,
-      trim: true,
-      lowercase: true,
-      required: true
-    },
-    description: {
-      type: String
-    }
+  details: {
+    type: Schema.ObjectId,
+    ref: 'Emergency',
+    required: true
   },
 
   name: {
@@ -53,38 +42,40 @@ var BeneficiarySchema = new Schema({
     required: true
   },
 
+  ticketNumber: {
+    type: Number,
+    required: true
+  },
+
   beneficiaries: {
-    masculine: {
+    male: {
       type: Number,
       default: 0
     },
-    feminine: {
+    female: {
       type: Number,
       default: 0
     },
-    total: {
-      type: Number
+    pregnant: {
+      type: Number,
+      default: 0
+    },
+    lactant: {
+      type: Number,
+      default: 0
+    },
+    disable: {
+      type: Number,
+      default: 0
+    },
+    greaterThan60: {
+      type: Number,
+      default: 0
+    },
+    lowerThan2: {
+      type: Number,
+      default: 0
     }
-  },
-
-  pregnants: {
-    type: Number,
-    default: 0
-  },
-
-  lactantMothers: {
-    type: Number,
-    default: 0
-  },
-
-  disables: {
-    type: Number,
-    default: 0
-  },
-
-  elders: {
-    type: Number,
-    default: 0
   },
 
   createdAt: {
