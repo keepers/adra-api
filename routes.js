@@ -13,6 +13,10 @@ router.get('/', function(req, res) {
 });
 
 
+router.route('/emergencies')
+  .get(controllers.emergency.find.bind(controllers.emergency))
+  .post(controllers.emergency.create.bind(controllers.emergency));
+
 router.route('/beneficiary')
   .get(controllers.beneficiary.find.bind(controllers.beneficiary))
   .post(controllers.beneficiary.create.bind(controllers.beneficiary));
