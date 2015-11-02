@@ -12,7 +12,7 @@ var BeneficiaryModel = class extends Model {
     return this.SchemaModel.aggregate([{
       //https://docs.mongodb.org/manual/reference/operator/aggregation/group/
       $group:{
-        _id: '$form.id',
+        _id: '$emergencyCode',
 
         averageMale: {
           $avg: '$beneficiaries.male'
