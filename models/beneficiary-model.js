@@ -14,30 +14,48 @@ var BeneficiaryModel = class extends Model {
       $group:{
         _id: '$form.id',
 
-        averagePregnants: {
-          $avg: '$pregnants'
+        averageMale: {
+          $avg: '$beneficiaries.male'
         },
-        averageLactantMothers: {
-          $avg: '$lactantMothers'
+        averageFemale: {
+          $avg: '$beneficiaries.female'
+        },
+        averagePregnant: {
+          $avg: '$beneficiaries.pregnant'
+        },
+        averageLactant: {
+          $avg: '$beneficiaries.lactant'
         },
         averageDisables: {
-          $avg: '$disables'
+          $avg: '$beneficiaries.disable'
         },
-        averageElders: {
-          $avg: '$elders'
+        averageGreaterThan60: {
+          $avg: '$beneficiaries.greaterThan60'
+        },
+        averageLowerThan2: {
+          $avg: '$beneficiaries.lowerThan2'
         },
 
-        totalPregnants: {
-          $sum: '$pregnants'
+        totalMale: {
+          $sum: '$beneficiaries.male'
         },
-        totalLactantMothers: {
-          $sum: '$lactantMothers'
+        totalFemale: {
+          $sum: '$beneficiaries.female'
+        },
+        totalPregnant: {
+          $sum: '$beneficiaries.pregnant'
+        },
+        totalLactant: {
+          $sum: '$beneficiaries.lactant'
         },
         totalDisables: {
-          $sum: '$disables'
+          $sum: '$beneficiaries.disable'
         },
-        totalElders: {
-          $sum: '$elders'
+        totalGreaterThan60: {
+          $sum: '$beneficiaries.greaterThan60'
+        },
+        totalLowerThan2: {
+          $sum: '$beneficiaries.lowerThan2'
         },
 
         totalCollection: {
