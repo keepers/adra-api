@@ -5,11 +5,7 @@ var Schema   = mongoose.Schema;
 
 var BeneficiarySchema = new Schema({
 
-  details: {
-    type: Schema.ObjectId,
-    ref: 'Emergency',
-    required: true
-  },
+ 
 
   name: {
     first: {
