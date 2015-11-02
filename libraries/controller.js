@@ -43,11 +43,12 @@ class Controller {
   }
 
   create(req, res, next) {
+    var self = this;
     var response = {};
     this.model.create(req.body)
     .then(function(doc) {
       response = doc;
-      return this.model.stats();
+      return self.model.stats();
     })
     .then(function (stats) {
       var socketio = req.app.get('socketio');
