@@ -2,7 +2,7 @@
 
 ### Install
 ```
-$ git clone https://github.com/ndelvalle/adra-api.git
+$ git clone https://github.com/keepers/adra-api.git
 $ cd adra-api
 $ npm install
 ```
