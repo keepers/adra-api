@@ -68,10 +68,12 @@ var BeneficiarySchema = new Schema({
       type: Number,
       default: 0
     },
+    // @TODO: use generic variable name like elders
     greaterThan60: {
       type: Number,
       default: 0
     },
+    // @TODO: use generic variable name like childs
     lowerThan2: {
       type: Number,
       default: 0
