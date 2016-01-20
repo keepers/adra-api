@@ -25,8 +25,8 @@ var amount = argv.amount || 10;
 var generateEmergency = function() {
   var emergency = {
     emergencyCode: 'EMERG-' + faker.random.number(),
-    name: faker.lorem.words(),
-    description: faker.lorem.words(),
+    name: faker.lorem.sentence(),
+    description: faker.lorem.sentences(),
   };
   console.log('Creating emergency: ', emergency.name);
 
