@@ -7,6 +7,7 @@
 // https://www.npmjs.com/package/yargs#with-yargs-the-options-be-just-a-hash
 
 var mongoose = require('mongoose');
+var ObjectId = require('mongoose').ObjectID;
 var bluebird = require('bluebird');
 var faker = require('faker');
 var argv = require('yargs').argv;
@@ -22,30 +23,26 @@ bluebird.promisifyAll(mongoose);
 
 var amount = argv.amount || 10;
 
-var form = {
-  id: faker.random.number(),
-  name: faker.name.firstName(),
-  description: faker.lorem.sentence()
-};
 var generateBeneficiary = function() {
   var beneficiary = {
-    form: form,
+    emergencyCode: mongoose.Types.ObjectId('569ed8269353e9f4c51617aa'),
     name: {
       first: faker.name.firstName(),
       last: faker.name.lastName()
     },
-    dni: 36478543,
+    dni: 36478542,
     gender: ['M', 'F'][Math.floor(Math.random() * ['M', 'F'].length)],
     age: faker.random.number(),
+    ticketNumber: 123,
     beneficiaries: {
-      masculine: 2,
-      feminine: 3,
-      total: 5
+      male: Math.floor(Math.random() * 3),
+      female: Math.floor(Math.random() * 3),
+      pregnant: Math.floor(Math.random() * 2),
+      lactant: Math.floor(Math.random() * 2),
+      disable: Math.floor(Math.random() * 2),
+      greaterThan60: Math.floor(Math.random() * 2),
+      lowerThan2: Math.floor(Math.random() * 3)
     },
-    pregnants: [0, 1, 2][Math.floor(Math.random() * [0, 1, 2].length)],
-    lactantMothers: [0, 1, 2][Math.floor(Math.random() * [0, 1, 2].length)],
-    disables: [0, 1, 2][Math.floor(Math.random() * [0, 1, 2].length)],
-    elders: [0, 1, 2][Math.floor(Math.random() * [0, 1, 2].length)]
   };
   console.log('Creating beneficiary: ', beneficiary.name);
 
